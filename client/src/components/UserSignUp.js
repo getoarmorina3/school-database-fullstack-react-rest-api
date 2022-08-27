@@ -71,6 +71,7 @@ class UserSignUp extends Component {
     );
   }
 
+  // Handles changes on the sign up input form texts and set state
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -82,6 +83,8 @@ class UserSignUp extends Component {
     });
   };
 
+  // Handles the submit form button for sign up
+  // Checks for validation errors
   submit = () => {
     const { context } = this.props;
     const { firstName, lastName, emailAddress, password } = this.state;

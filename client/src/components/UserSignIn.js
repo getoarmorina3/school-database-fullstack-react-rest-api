@@ -52,6 +52,7 @@ class UserSignIn extends Component {
     );
   }
 
+  // Handles changes on the sign in input form texts and set state
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -63,6 +64,7 @@ class UserSignIn extends Component {
     });
   };
 
+  // Handles the submit form button checks if user is authenticated to sign in
   submit = () => {
     const { context } = this.props;
     const { emailAddress, password } = this.state;

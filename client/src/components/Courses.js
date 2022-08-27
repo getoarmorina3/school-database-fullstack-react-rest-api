@@ -5,12 +5,16 @@ export default class Courses extends Component {
   state = {
     courses: [],
   };
+
+  // Fetches through the API courses object 
+  // Converts the data into json and set state
   componentDidMount() {
     fetch("http://localhost:5000/api/courses")
       .then((res) => res.json())
       .then((response) => {
         this.setState({ courses: response });
       })
+      // Handles bad request error
       .catch((error) => {
         console.log('Error fetching the data', error);
       });

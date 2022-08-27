@@ -1,6 +1,10 @@
 import config from "./config";
 
 export default class Data {
+  /*
+  Handles the API request and responses
+  and 'Credentials' parameters depending on API requests and responses.
+  */
   api(
     path,
     method = "GET",
@@ -17,10 +21,12 @@ export default class Data {
       },
     };
 
+    // Checks if body is not null and Stringifies the content
     if (body !== null) {
       options.body = JSON.stringify(body);
     }
 
+    // Checks if authentication is required
     if (requiresAuth) {
       const encodedCredentials = btoa(
         `${credentials.emailAddress}:${credentials.password}`
@@ -30,12 +36,18 @@ export default class Data {
     return fetch(url, options);
   }
 
+  /*
+  GET - User
+  Auth - Yes
+  Params - 'emailAddress', 'password'
+  */
   async getUser(emailAddress, password) {
     const response = await this.api(`/users`, "GET", null, true, {
       emailAddress,
       password,
     });
     if (response.status === 200) {
+      // Converts data into JSON and return
       return response.json().then((data) => data);
     } else if (response.status === 401) {
       return null;
@@ -44,6 +56,11 @@ export default class Data {
     }
   }
 
+  /*
+  POST - New User
+  Auth - No
+  Params - user data
+  */
   async createUser(user) {
     const response = await this.api("/users", "POST", user);
     if (response.status === 201) {

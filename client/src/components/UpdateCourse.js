@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Form from "./Form";
 
+// Update a course by an authorised user
 const UpdateCourse = (props) => {
   const history = useHistory();
   const { context } = props;
@@ -21,6 +22,8 @@ const UpdateCourse = (props) => {
   const [errors, setErrors] = useState([]);
   const { id } = useParams();
 
+  // Fetches through the courses object that matches the id params
+  // Converts data into JSON and set state
   useEffect(() => {
     fetch(`http://localhost:5000/api/courses/${id}`)
       .then((res) => res.json())
@@ -40,6 +43,7 @@ const UpdateCourse = (props) => {
       });
   }, [id]);
 
+  // Submit variable to handle the changes on the courses object
   const submit = () => {
     const courseUpdate = {
       title,
@@ -62,6 +66,7 @@ const UpdateCourse = (props) => {
       });
   };
 
+  // Variable to handle the submit form button
   const change = (e) => {
     let name = e.target.name;
     let value = e.target.value;

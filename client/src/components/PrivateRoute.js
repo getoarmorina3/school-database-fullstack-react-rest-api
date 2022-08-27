@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Consumer } from "../Context";
 
+// Component to handle Private Routes
 const privateRoute = ({ component: Component, ...rest }) => {
   return (
     <Consumer>

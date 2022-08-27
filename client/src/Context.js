@@ -8,8 +8,8 @@ export class Provider extends Component {
   constructor() {
     super();
     this.data = new Data();
+    // Authenticates the user with Cookies , if not returns null
     this.cookie = Cookies.get("authenticatedUser");
-
     this.state = {
       authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null,
     };
@@ -31,7 +31,8 @@ export class Provider extends Component {
       <Context.Provider value={value}>{this.props.children}</Context.Provider>
     );
   }
-
+  // Action - Sign In 'user' and provide Cookie
+  // PARAMS - 'emailAddress' , 'password'
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
 
@@ -52,6 +53,7 @@ export class Provider extends Component {
     return user;
   };
 
+  // Action - Sign Out 'user' and remove Cookie
   signOut = () => {
     this.setState({ authenticatedUser: null });
     Cookies.remove("authenticatedUser");
@@ -60,6 +62,7 @@ export class Provider extends Component {
 
 export const Consumer = Context.Consumer;
 
+// Higher order component to wrap the provided access to context
 export default function withContext(Component) {
   return function ContextComponent(props) {
     return (

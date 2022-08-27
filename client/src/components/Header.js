@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//Checks if user if authenticated and renders the component accordingly
 export default class Header extends React.PureComponent {
   render() {
     const { context } = this.props;
@@ -13,7 +14,6 @@ export default class Header extends React.PureComponent {
             <Link to="/">Courses</Link>
           </h1>
           <nav>
-            // Checks if user if authenticated and renders the component accordingly
             {authUser ? (
               <React.Fragment>
                 <ul className="header--signedin">

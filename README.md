@@ -7,7 +7,7 @@ To accomplish this project, I leveraged my expertise in React, JSX, React Router
 To run this project, follow the steps below:
 
 - Navigate to the `api` folder in your terminal.
-- Run `npm i to install` the required dependencies.
+- Run `npm install` to install the required dependencies.
 - Execute `npm run seed` to seed the database.
 - Start the server by running `node app.js`. The server will run on port 5000.
 

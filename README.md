@@ -1,4 +1,4 @@
-# School Database Fullstack React REST API
+### School Database Fullstack React REST API
  
 In this project, I utilized React to develop a client for my pre-existing school database REST API. The full-stack application facilitates users in administering a school database, encompassing information about courses. Users can engage with the database by retrieving a list of courses, viewing details for a specific course, as well as creating, updating, and deleting courses in the database.
 
